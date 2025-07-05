@@ -1,0 +1,43 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block content %}
+<section class="bg-primary bg-gradient text-white text-center py-5 mb-4">
+  <div class="container">
+    <h1 class="display-6 fw-bold mb-3">Post a New Job</h1>
+    <p class="lead">Fill out the form below to publish your job opening.</p>
+  </div>
+</section>
+
+<div class="container my-5 p-4 bg-white rounded-4 shadow-lg">
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="jobTitle" class="form-label">Job Title</label>
+      <input type="text" class="form-control form-control-lg" id="jobTitle" placeholder="Enter job title" name="job_title" required>
+    </div>
+    <div class="mb-3">
+      <label for="jobDescription" class="form-label">Job Description</label>
+      <textarea class="form-control form-control-lg" id="jobDescription" rows="5" placeholder="Describe the responsibilities, requirements, etc." name="job_description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="jobLocation" class="form-label">Location</label>
+      <input type="text" class="form-control form-control-lg" id="jobLocation" placeholder="Enter job location" name="job_location" required>
+    </div>
+    <div class="mb-3">
+      <label for="jobType" class="form-label">Job Type</label>
+      <select class="form-select form-select-lg" id="jobType" name="job_type" required>
+        <option selected disabled>Select job type</option>
+        <option>Full-Time</option>
+        <option>Part-Time</option>
+        <option>Contract</option>
+        <option>Internship</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="salaryRange" class="form-label">Salary Range</label>
+      <input type="text" class="form-control form-control-lg" id="salaryRange" placeholder="e.g., $40,000 - $60,000" name="salary" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg w-100 shadow">Post Job</button>
+  </form>
+</div>
+{% endblock %}

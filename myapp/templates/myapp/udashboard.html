@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-4">Hello, {{ applicant.full_name }}</h2>
+    <h4 class="mb-3">Your Applied Jobs</h4>
+
+    {% if applied_jobs %}
+      <div class="row g-4">
+        {% for job in applied_jobs %}
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ job.title }}</h5>
+              <h6 class="card-subtitle text-muted">{{ job.recruiter.company_name }}</h6>
+              <p class="card-text">{{ job.description|truncatewords:20 }}</p>
+              <span class="badge bg-primary">{{ job.job_type }}</span>
+              <div class="mt-2 text-success fw-bold">{{ job.salary_range }}</div>
+              <div class="mt-2 small text-muted">Posted on {{ job.posted_at|date:"M d, Y" }}</div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">You haven’t applied to any jobs yet.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

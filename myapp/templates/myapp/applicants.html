@@ -1,0 +1,49 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block content %}
+<section class="bg-primary text-white text-center py-4">
+    <div class="container">
+      <h1>Applicants</h1>
+      <p class="lead">Review all candidates who applied to your jobs.</p>
+    </div>
+</section>
+
+<div class="container my-5">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Applied Positions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if applicants %}
+          {% for applicant in applicants %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ applicant.full_name }}</td>
+            <td>{{ applicant.email }}</td>
+            <td>{{ applicant.phone }}</td>
+            <td>
+              {% for job in applicant.applied_jobs.all %}
+                <span class="badge bg-secondary">{{ job.title }}</span>
+              {% empty %}
+                <span class="text-muted">No jobs</span>
+              {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center text-muted">No applicants have applied yet.</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

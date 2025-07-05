@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Job Portal</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-7">
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0"><i class="fas fa-cube"></i> JobSphere Login</h4>
+          </div>
+          <div class="card-body">
+            <!-- Nav Tabs -->
+            <ul class="nav nav-tabs mb-3" id="loginTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="applicant-tab" data-bs-toggle="tab" data-bs-target="#applicant" type="button" role="tab">
+                  <i class="fas fa-user"></i> Applicant
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="recruiter-tab" data-bs-toggle="tab" data-bs-target="#recruiter" type="button" role="tab">
+                  <i class="fas fa-building"></i> Recruiter
+                </button>
+              </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+              <!-- Applicant Login -->
+              <div class="tab-pane fade show active" id="applicant" role="tabpanel">
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <input type="hidden" name="user_type" value="applicant">
+                  <div class="mb-3">
+                    <label for="applicantName" class="form-label">Full Name</label>
+                    <input type="text" id="applicantName" class="form-control" placeholder="Enter full name" name="full_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="applicantEmail" class="form-label">Email Address</label>
+                    <input type="email" id="applicantEmail" class="form-control" placeholder="Enter email" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="applicantPhone" class="form-label">Phone Number</label>
+                    <input type="tel" id="applicantPhone" class="form-control" placeholder="Enter phone number" name="phone" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="applicantPassword" class="form-label">Password</label>
+                    <input type="password" id="applicantPassword" class="form-control" placeholder="Enter password" name="password" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="resume" class="form-label">Upload Resume</label>
+                    <input type="file" id="resume" class="form-control" name="resume" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="applicantName" class="form-label">Your Skills</label>
+                    <input type="text" id="applicantskills" class="form-control" placeholder="Enter your skills, seperated with commas" name="skills" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="desiredJob" class="form-label">Desired Job Title</label>
+                    <input type="text" id="desiredJob" class="form-control" placeholder="e.g., Software Engineer" name="desired_job" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="applicantLocation" class="form-label">Preferred Location</label>
+                    <input type="text" id="applicantLocation" class="form-control" placeholder="e.g., New York" name="location" required>
+                  </div>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-sign-in-alt"></i> Register as Applicant
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Recruiter Login -->
+              <div class="tab-pane fade" id="recruiter" role="tabpanel">
+                <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user_type" value="recruiter">
+                  <div class="mb-3">
+                    <label for="recruiterName" class="form-label">Full Name</label>
+                    <input type="text" id="recruiterName" class="form-control" placeholder="Enter full name" name="full_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="recruiterEmail" class="form-label">Company Email</label>
+                    <input type="email" id="recruiterEmail" class="form-control" placeholder="Enter company email" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="recruiterPhone" class="form-label">Phone Number</label>
+                    <input type="tel" id="recruiterPhone" class="form-control" placeholder="Enter phone number" name="phone" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="recruiterPassword" class="form-label">Password</label>
+                    <input type="password" id="recruiterPassword" class="form-control" placeholder="Enter password" name="password" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="companyName" class="form-label">Company Name</label>
+                    <input type="text" id="companyName" class="form-control" placeholder="Enter company name" name="company_name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="companyWebsite" class="form-label">Company Website</label>
+                    <input type="url" id="companyWebsite" class="form-control" placeholder="https://example.com" name="company_website" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="companyAddress" class="form-label">Company Address</label>
+                    <textarea id="companyAddress" class="form-control" placeholder="Enter company address" name="company_address" required></textarea>
+                  </div>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-secondary">
+                      <i class="fas fa-sign-in-alt"></i> Register as Recruiter
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center">
+            <small class="text-muted">Already have an account? <a href="{% url 'login' %}">Login</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

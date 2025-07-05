@@ -1,0 +1,36 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<section class="bg-primary text-white text-center py-4">
+  <div class="container">
+    <h1>All Available Jobs</h1>
+    <p class="lead">Browse the latest job openings posted by recruiters</p>
+  </div>
+</section>
+
+<div class="container my-5">
+  {% if jobs %}
+    <div class="row">
+      {% for job in jobs %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-primary">{{ job.title }}</h5>
+              <p class="card-text mb-2"><strong>Company:</strong> {{ job.recruiter.company_name }}</p>
+              <p class="card-text mb-2"><strong>Location:</strong> {{ job.location }}</p>
+              <p class="card-text mb-2"><strong>Type:</strong> {{ job.job_type }}</p>
+              <p class="card-text mb-3"><strong>Salary:</strong> {{ job.salary_range }}</p>
+              <p class="card-text text-muted small mt-auto">Posted on {{ job.posted_at|date:"M d, Y" }}</p>
+              <a href="{% url 'apply_to_job' job.id %}" class="btn btn-primary btn-sm">
+  <i class="fas fa-paper-plane"></i> Apply Now
+</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted text-center">No jobs have been posted yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
