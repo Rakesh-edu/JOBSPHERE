@@ -1,0 +1,75 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary">About JobSphere</h1>
+      <p class="lead text-muted">Connecting talent with opportunity across the globe.</p>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTzharaCN3SCcxGQzW-fT69YZxtdo-HaG9_w&s" alt="Our Mission" class="img-fluid rounded shadow-sm">
+      </div>
+      <div class="col-md-6">
+        <h3 class="fw-semibold mb-3">Our Mission</h3>
+        <p class="text-muted">
+          At JobSphere, our mission is to bridge the gap between talented professionals and the organizations that need them. We strive to create a platform where job seekers and recruiters can connect effortlessly and build lasting professional relationships.
+        </p>
+        <p class="text-muted">
+          With a commitment to innovation and transparency, we help individuals find meaningful work while empowering companies to grow their teams with confidence.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="border rounded p-4 h-100">
+          <h4 class="text-primary mb-3">10,000+</h4>
+          <p class="mb-0 text-muted">Jobs Posted</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="border rounded p-4 h-100">
+          <h4 class="text-primary mb-3">5,000+</h4>
+          <p class="mb-0 text-muted">Companies Served</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="border rounded p-4 h-100">
+          <h4 class="text-primary mb-3">100,000+</h4>
+          <p class="mb-0 text-muted">Candidates Connected</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDYH358-XYYEeeOyPW8r5_ipkTQvQNUvMFhg&s" alt="Our Vision" class="img-fluid rounded shadow-sm">
+      </div>
+      <div class="col-md-6">
+        <h3 class="fw-semibold mb-3">Our Vision</h3>
+        <p class="text-muted">
+          We envision a world where finding the right job or hiring the perfect candidate is simple, transparent, and rewarding. JobSphere is dedicated to using technology and community-driven approaches to redefine recruitment for the modern era.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 text-center">
+  <div class="container">
+    <h3 class="fw-bold mb-3">Ready to get started?</h3>
+    <p class="text-muted mb-4">Join JobSphere today and discover the difference.</p>
+    <a href="{% url 'register' %}" class="btn btn-primary btn-lg">Create Your Account</a>
+  </div>
+</section>
+{% endblock %}
