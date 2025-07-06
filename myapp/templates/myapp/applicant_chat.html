@@ -1,0 +1,137 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container py-4">
+  <!-- Chat Header -->
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          <div class="row align-items-center">
+            <div class="col">
+              <h4 class="mb-0">
+                <i class="fas fa-comments me-2"></i>
+                Chat Conversation
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-body bg-light">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex align-items-center">
+                <div class="bg-success rounded-circle me-2" style="width: 10px; height: 10px;"></div>
+                <strong class="text-muted">Applicant:</strong>
+                <span class="ms-2">{{ applicant.full_name }}</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-center">
+                <div class="bg-info rounded-circle me-2" style="width: 10px; height: 10px;"></div>
+                <strong class="text-muted">Recruiter:</strong>
+                <span class="ms-2">{{ recruiter.full_name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white border-bottom">
+          <h6 class="mb-0 text-muted">
+            <i class="fas fa-history me-2"></i>
+            Message History
+          </h6>
+        </div>
+        <div class="card-body p-0">
+          <div class="chat-container" style="height: 400px; overflow-y: auto; padding: 15px;">
+            {% for message in chat_messages %}
+              {% if message.sender_applicant %}
+                <!-- Applicant Message (Left aligned) -->
+                <div class="d-flex mb-3">
+                  <div class="me-3">
+                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+                      <i class="fas fa-user"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="bg-light rounded-3 p-3 shadow-sm">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <strong class="text-success">{{ message.sender_applicant.full_name }}</strong>
+                        <small class="text-muted">{{ message.timestamp|date:"M d, Y g:i A" }}</small>
+                      </div>
+                      <p class="mb-0">{{ message.content }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% elif message.sender_recruiter %}
+                <!-- Recruiter Message (Right aligned) -->
+                <div class="d-flex mb-3 justify-content-end">
+                  <div class="flex-grow-1" style="max-width: 70%;">
+                    <div class="bg-primary text-white rounded-3 p-3 shadow-sm">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <strong class="text-light">{{ message.sender_recruiter.full_name }}</strong>
+                        <small class="text-light opacity-75">{{ message.timestamp|date:"M d, Y g:i A" }}</small>
+                      </div>
+                      <p class="mb-0">{{ message.content }}</p>
+                    </div>
+                  </div>
+                  <div class="ms-3">
+                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+                      <i class="fas fa-user-tie"></i>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% empty %}
+              <div class="text-center py-5">
+                <div class="text-muted">
+                  <i class="fas fa-comments fa-3x mb-3 opacity-50"></i>
+                  <h5>No messages yet</h5>
+                  <p>Start the conversation by sending a message below.</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Input Form -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-white border-bottom">
+          <h6 class="mb-0 text-muted">
+            <i class="fas fa-pencil-alt me-2"></i>
+            Send Message
+          </h6>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <textarea 
+                name="content" 
+                rows="3" 
+                class="form-control border-0 shadow-sm" 
+                placeholder="Type your message here..."
+                style="resize: none; background-color: #f8f9fa;"
+                required
+              ></textarea>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                Press Ctrl+Enter to send quickly
+              </small>
+              <button type="submit" class="btn btn-primary px-4">
+                <i class="fas fa-paper-plane me-2"></i>
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
