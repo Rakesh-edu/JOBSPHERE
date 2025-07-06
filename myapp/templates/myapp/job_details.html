@@ -29,6 +29,9 @@
             </td>
             <td>{{ applicant.skills }}</td>
             <td>{{ applicant.location }}</td>
+            <td><a href="{% url 'recruiter_chat' applicant.id %}" class="btn btn-primary">Chat with {{ applicant.full_name }}</a>
+
+</td>
           </tr>
         {% endfor %}
       </tbody>

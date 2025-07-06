@@ -19,4 +19,7 @@ urlpatterns = [
     path('rprofile/',views.rprofile,name='rprofile'),
     path('apply/<int:job_id>/',views.apply_to_job,name='apply_to_job'),
     path('job/<int:job_id>/', views.job_details, name='job_details'),
+    path("applicant/chat/<int:recruiter_id>/", views.applicant_chat, name="applicant_chat"),
+    path("recruiter/chat/<int:applicant_id>/", views.recruiter_chat, name="recruiter_chat"),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

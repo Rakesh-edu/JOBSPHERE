@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect,get_object_or_404
 from .models import Applicant,Recruiter,Job
 from django.contrib import messages
 from django.core.mail import send_mail
-# from django.db.models import Count
+from .models import Message
+from django.db import models
 
 
 def base(request):
@@ -225,11 +226,71 @@ def job_details(request, job_id):
     if not recruiter_id:
         messages.error(request, "You must be logged in as a recruiter.")
         return redirect("login")
-
+    recruiter = get_object_or_404(Recruiter, id=recruiter_id)
     job = get_object_or_404(Job, id=job_id, recruiter_id=recruiter_id)
     applicants = job.applicants.all()
 
     return render(request, "myapp/job_details.html", {
         "job": job,
-        "applicants": applicants
+        "applicants": applicants,
+        "recruiter": recruiter,
+    })
+
+def applicant_chat(request, recruiter_id):
+    applicant_id = request.session.get('applicant_id')
+    if not applicant_id:
+        messages.error(request, "You must be logged in as an applicant.")
+        return redirect('login')
+
+    applicant = get_object_or_404(Applicant, id=applicant_id)
+    recruiter = get_object_or_404(Recruiter, id=recruiter_id)
+
+    chat_messages = Message.objects.filter(
+        models.Q(sender_applicant=applicant, receiver_recruiter=recruiter) |
+        models.Q(sender_recruiter=recruiter, receiver_applicant=applicant)
+    ).order_by('timestamp')
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        Message.objects.create(
+            sender_applicant=applicant,
+            receiver_recruiter=recruiter,
+            content=content
+        )
+        return redirect('applicant_chat', recruiter_id=recruiter.id)
+
+    return render(request, 'myapp/applicant_chat.html', {
+        'chat_messages': chat_messages,
+        'applicant': applicant,
+        'recruiter': recruiter,
+    })
+
+
+def recruiter_chat(request, applicant_id):
+    recruiter_id = request.session.get('recruiter_id')
+    if not recruiter_id:
+        messages.error(request, "You must be logged in as a recruiter.")
+        return redirect('login')
+
+    recruiter = get_object_or_404(Recruiter, id=recruiter_id)
+    applicant = get_object_or_404(Applicant, id=applicant_id)
+
+    chat_messages = Message.objects.filter(
+        models.Q(sender_applicant=applicant, receiver_recruiter=recruiter) |
+        models.Q(sender_recruiter=recruiter, receiver_applicant=applicant)
+    ).order_by('timestamp')
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        Message.objects.create(
+            sender_recruiter=recruiter,
+            receiver_applicant=applicant,
+            content=content
+        )
+        return redirect('recruiter_chat', applicant_id=applicant.id)
+
+    return render(request, 'myapp/recruiter_chat.html', {
+        'chat_messages': chat_messages,
+        'applicant': applicant,
+        'recruiter': recruiter,
     })

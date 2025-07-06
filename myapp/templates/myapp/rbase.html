@@ -6,9 +6,12 @@
   <title>Recruiter Dashboard</title>
   <!-- Bootstrap CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#"><i class="fas fa-cube"></i> JobSphere</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -17,22 +20,73 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="{% url 'rhome' %}"><i class="fas fa-home"></i> Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="{% url 'rdashboard' %}"><i class="fas fa-dashboard"></i> Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link active" href="{% url 'postjob' %}"><i class="fas fa-job"></i> Post Job</a></li>
-          <li class="nav-item"><a class="nav-link active" href="{% url 'applicants' %}"><i class="fas fa-briefcase"></i> Applicants</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'rdashboard' %}"><i class="fas fa-gauge"></i> Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'postjob' %}"><i class="fas fa-briefcase"></i> Post Job</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'applicants' %}"><i class="fas fa-users"></i> Applicants</a></li>
           <li class="nav-item"><a class="nav-link active" href="{% url 'rprofile' %}"><i class="fas fa-user"></i> Profile</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- Messages -->
   {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-success">{{ message }}</div><br><br>
-          {% endfor %}
-   {% endif %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Page Content -->
+  <main class="container my-4">
     {% block content %}
-    
     {% endblock %}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5 mt-5">
+    <div class="container-fluid">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5><i class="fas fa-cube"></i> JobSphere</h5>
+          <p>Your trusted partner in finding the perfect career opportunity.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h6>Company</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6>Support</h6>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white text-decoration-none">Help Center</a></li>
+            <li><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Contact Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4 border-light">
+      <div class="d-flex justify-content-between flex-wrap">
+        <p class="mb-0">&copy; 2025 JobSphere. All rights reserved.</p>
+        <div>
+          <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
