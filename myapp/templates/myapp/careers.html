@@ -1,0 +1,105 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<section class="bg-primary text-white py-5">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold">Join Our Team</h1>
+    <p class="lead">Explore exciting career opportunities and grow with us.</p>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col">
+        <h2 class="fw-bold text-dark">Why Work With Us?</h2>
+        <p class="text-muted">
+          We believe in empowering our employees, fostering innovation, and building an inclusive workplace.
+        </p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary">Collaborative Culture</h5>
+            <p class="card-text">
+              Work with passionate professionals who value teamwork, learning, and excellence.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary">Growth & Development</h5>
+            <p class="card-text">
+              Access training, mentorship, and career advancement opportunities tailored to your goals.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title text-primary">Meaningful Work</h5>
+            <p class="card-text">
+              Make a real impact by connecting job seekers and recruiters across industries.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col">
+        <h2 class="fw-bold text-dark">Current Openings</h2>
+        <p class="text-muted">
+          Browse our latest job openings and find your next opportunity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Example job listings -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Frontend Developer</h5>
+            <p class="card-text">Hyderabad · Full Time</p>
+            <p class="card-text small text-muted">
+              Build engaging user interfaces using modern web technologies.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Recruitment Specialist</h5>
+            <p class="card-text">Remote · Full Time</p>
+            <p class="card-text small text-muted">
+              Help connect top talent with the right opportunities.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Add more job cards as needed -->
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary text-white py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold">Ready to Start Your Journey?</h2>
+    <p>We'd love to hear from you. Take the next step in your career today.</p>
+    <a href="{% url 'register' %}" class="btn btn-light mt-3">Join Us</a>
+  </div>
+</section>
+{% endblock %}
