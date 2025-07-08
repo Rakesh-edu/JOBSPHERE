@@ -1,0 +1,54 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="mb-4 text-center">Privacy Policy</h1>
+    <p class="lead text-center mb-5">
+      We respect your privacy and are committed to protecting your personal data.
+    </p>
+    <div class="mb-4">
+      <h4>1. Information We Collect</h4>
+      <p>
+        We collect personal and professional information you provide when creating an account, posting jobs, or communicating with our team.
+      </p>
+    </div>
+    <div class="mb-4">
+      <h4>2. How We Use Your Information</h4>
+      <p>
+        We use your data to provide recruiting services, communicate with you, improve our platform, and comply with legal obligations.
+      </p>
+    </div>
+    <div class="mb-4">
+      <h4>3. Data Sharing</h4>
+      <p>
+        We do not sell your data. We may share information with trusted partners who assist us in operating our services, under strict confidentiality.
+      </p>
+    </div>
+    <div class="mb-4">
+      <h4>4. Your Rights</h4>
+      <p>
+        You can request access, correction, or deletion of your personal data at any time by contacting us.
+      </p>
+    </div>
+    <div class="mb-4">
+      <h4>5. Security</h4>
+      <p>
+        We implement appropriate technical and organizational measures to protect your information.
+      </p>
+    </div>
+    <div class="mb-4">
+      <h4>6. Updates to This Policy</h4>
+      <p>
+        We may update this Privacy Policy periodically. Changes will be posted on this page.
+      </p>
+    </div>
+    <div class="mb-4">
+      <h4>7. Contact Us</h4>
+      <p>
+        If you have any questions about this policy, please <a href="{% url 'recruiter_contact' %}">contact us</a>.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
