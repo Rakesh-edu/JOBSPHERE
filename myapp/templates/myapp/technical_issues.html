@@ -1,0 +1,27 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+<section class="py-5 bg-warning text-dark text-center">
+  <div class="container">
+    <h1 class="fw-bold"><i class="fas fa-exclamation-triangle"></i> Technical Issues</h1>
+    <p class="lead">Troubleshooting common problems and getting help</p>
+  </div>
+</section>
+
+<div class="container my-5">
+  <div class="card shadow border-0">
+    <div class="card-body">
+      <h4 class="mb-3">Having trouble using the platform?</h4>
+      <p>If you’re experiencing technical issues, here are some tips to help you resolve them:</p>
+      <ul>
+        <li>Make sure you have a stable internet connection.</li>
+        <li>Clear your browser cache and cookies.</li>
+        <li>Try accessing the platform with a different browser.</li>
+        <li>Ensure your browser is up to date.</li>
+        <li>If you see any error messages, take a screenshot to share with support.</li>
+      </ul>
+      <p>If the problem persists, please <a href="{% url 'contactus' %}">contact our support team</a>.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
