@@ -1,0 +1,66 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+<section class="bg-secondary text-white text-center py-5">
+  <div class="container">
+    <h1 class="fw-bold"><i class="fas fa-cogs"></i> Account Management</h1>
+    <p class="lead">Find help with updating your information, changing passwords, and managing notifications.</p>
+  </div>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-user-edit me-2"></i>Update Profile Information</h5>
+          <p class="card-text">
+            Keep your profile details current so recruiters can easily reach you. Update your name, email, phone number, location, and resume.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'edit_profile' %}" class="btn btn-secondary btn-sm">Edit Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-key me-2"></i>Change Password</h5>
+          <p class="card-text">
+            Protect your account by updating your password regularly. Use a strong password you haven't used elsewhere.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="#" class="btn btn-secondary btn-sm disabled">Change Password (Coming Soon)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-bell me-2"></i>Manage Notifications</h5>
+          <p class="card-text">
+            Choose how you receive updates about job applications, messages, and new opportunities.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="#" class="btn btn-secondary btn-sm disabled">Manage Notifications (Coming Soon)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-4 bg-light">
+  <div class="container text-center">
+    <p class="mb-1">
+      Have more questions about your account?
+    </p>
+    <a href="{% url 'helpcenter' %}" class="btn btn-outline-secondary btn-sm me-2">Help Center</a>
+    <a href="{% url 'contactus' %}" class="btn btn-outline-secondary btn-sm">Contact Support</a>
+  </div>
+</section>
+{% endblock %}
