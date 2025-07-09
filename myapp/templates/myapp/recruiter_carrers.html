@@ -1,0 +1,64 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block title %}JobSphere-Careers{% endblock %}
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="text-center mb-4">Careers at JobSphere</h1>
+    <p class="lead text-center mb-5">
+      Join our team of innovators transforming how companies discover top talent.
+    </p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Senior Recruiter</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Hyderabad, India</h6>
+            <p class="card-text">
+              Lead end-to-end recruitment processes and help clients build world-class teams.
+            </p>
+            <a href="#" class="btn btn-primary">
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Talent Acquisition Specialist</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Remote</h6>
+            <p class="card-text">
+              Source, engage, and onboard exceptional candidates across multiple industries.
+            </p>
+            <a href="#" class="btn btn-primary">
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Customer Success Manager</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Bengaluru, India</h6>
+            <p class="card-text">
+              Build strong relationships with recruiters and ensure platform success.
+            </p>
+            <a href="#" class="btn btn-primary">
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <h4>Don't see a role that fits?</h4>
+      <p>We'd still love to hear from you.</p>
+      <a href="{% url 'recruiter_contact' %}" class="btn btn-outline-primary">
+        Contact Our Team
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}JobSphere-Getting Started{% endblock %}
+{% block content %}
+<section class="bg-info text-white text-center py-5">
+  <div class="container">
+    <h1 class="fw-bold"><i class="fas fa-rocket"></i> Getting Started as an Applicant</h1>
+    <p class="lead">Learn how to create an account, set up your profile, and start applying for jobs.</p>
+  </div>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-user-plus me-2"></i>Create an Account</h5>
+          <p class="card-text">
+            Sign up as an applicant by providing your basic details like full name, email, and a password. 
+            Make sure to use a valid email address to receive job notifications.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'register' %}" class="btn btn-primary btn-sm">Register Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-id-card me-2"></i>Complete Your Profile</h5>
+          <p class="card-text">
+            After registering, fill in your profile with details such as phone number, location, skills, desired job title, and upload your resume. 
+            A complete profile increases your chances of getting noticed by recruiters.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'profile' %}" class="btn btn-primary btn-sm">View Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-briefcase me-2"></i>Start Applying</h5>
+          <p class="card-text">
+            Browse the latest job postings and apply directly through the platform. 
+            You can track your application status and chat with recruiters to stay updated.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'jobs' %}" class="btn btn-primary btn-sm">Find Jobs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-4 bg-light">
+  <div class="container text-center">
+    <p class="mb-1">
+      Need help or have questions?
+    </p>
+    <a href="{% url 'helpcenter' %}" class="btn btn-outline-secondary btn-sm me-2">Help Center</a>
+    <a href="{% url 'contactus' %}" class="btn btn-outline-secondary btn-sm">Contact Support</a>
+  </div>
+</section>
+{% endblock %}

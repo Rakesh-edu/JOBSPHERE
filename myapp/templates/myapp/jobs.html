@@ -1,14 +1,66 @@
 {% extends 'myapp/base.html' %}
 
+{% block title %}JobSphere-AvailableJob{% endblock %}
 {% block content %}
-<section class="bg-primary text-white text-center py-4">
+<section class="bg-info text-white text-center py-4">
   <div class="container">
     <h1>All Available Jobs</h1>
     <p class="lead">Browse the latest job openings posted by recruiters</p>
   </div>
 </section>
 
-<div class="container my-5">
+<div class="container my-4">
+
+  <!-- Filter Controls -->
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+      <label for="roleFilter" class="form-label">Filter by Role</label>
+      <select class="form-select" id="roleFilter" name="role">
+  <option value="">All Roles</option>
+  <option value="Backend Developer" {% if request.GET.role == 'Backend Developer' %}selected{% endif %}>Backend Developer</option>
+  <option value="Frontend Developer" {% if request.GET.role == 'Frontend Developer' %}selected{% endif %}>Frontend Developer</option>
+  <option value="Full Stack Developer" {% if request.GET.role == 'Full Stack Developer' %}selected{% endif %}>Full Stack Developer</option>
+  <option value="DevOps Engineer" {% if request.GET.role == 'DevOps Engineer' %}selected{% endif %}>DevOps Engineer</option>
+  <option value="Data Engineer" {% if request.GET.role == 'Data Engineer' %}selected{% endif %}>Data Engineer</option>
+  <option value="Data Scientist" {% if request.GET.role == 'Data Scientist' %}selected{% endif %}>Data Scientist</option>
+  <option value="Machine Learning Engineer" {% if request.GET.role == 'Machine Learning Engineer' %}selected{% endif %}>Machine Learning Engineer</option>
+  <option value="AI Engineer" {% if request.GET.role == 'AI Engineer' %}selected{% endif %}>AI Engineer</option>
+  <option value="Cloud Engineer" {% if request.GET.role == 'Cloud Engineer' %}selected{% endif %}>Cloud Engineer</option>
+  <option value="Mobile App Developer" {% if request.GET.role == 'Mobile App Developer' %}selected{% endif %}>Mobile App Developer</option>
+  <option value="iOS Developer" {% if request.GET.role == 'iOS Developer' %}selected{% endif %}>iOS Developer</option>
+  <option value="Android Developer" {% if request.GET.role == 'Android Developer' %}selected{% endif %}>Android Developer</option>
+  <option value="UI/UX Designer" {% if request.GET.role == 'UI/UX Designer' %}selected{% endif %}>UI/UX Designer</option>
+  <option value="Product Manager" {% if request.GET.role == 'Product Manager' %}selected{% endif %}>Product Manager</option>
+  <option value="Project Manager" {% if request.GET.role == 'Project Manager' %}selected{% endif %}>Project Manager</option>
+  <option value="QA Engineer" {% if request.GET.role == 'QA Engineer' %}selected{% endif %}>QA Engineer</option>
+  <option value="Software Tester" {% if request.GET.role == 'Software Tester' %}selected{% endif %}>Software Tester</option>
+  <option value="Cybersecurity Analyst" {% if request.GET.role == 'Cybersecurity Analyst' %}selected{% endif %}>Cybersecurity Analyst</option>
+  <option value="Network Engineer" {% if request.GET.role == 'Network Engineer' %}selected{% endif %}>Network Engineer</option>
+  <option value="System Administrator" {% if request.GET.role == 'System Administrator' %}selected{% endif %}>System Administrator</option>
+  <option value="Business Analyst" {% if request.GET.role == 'Business Analyst' %}selected{% endif %}>Business Analyst</option>
+  <option value="Technical Support" {% if request.GET.role == 'Technical Support' %}selected{% endif %}>Technical Support</option>
+  <option value="Database Administrator" {% if request.GET.role == 'Database Administrator' %}selected{% endif %}>Database Administrator</option>
+  <option value="Other" {% if request.GET.role == 'Other' %}selected{% endif %}>Other</option>
+</select>
+
+    </div>
+
+    <div class="col-md-4">
+      <label for="dateFilter" class="form-label">Filter by Date</label>
+      <select class="form-select" id="dateFilter" name="date_filter">
+        <option value="">Any Time</option>
+        <option value="today" {% if request.GET.date_filter == 'today' %}selected{% endif %}>Today</option>
+        <option value="yesterday" {% if request.GET.date_filter == 'yesterday' %}selected{% endif %}>Yesterday</option>
+        <option value="last_week" {% if request.GET.date_filter == 'last_week' %}selected{% endif %}>Last Week</option>
+        <option value="last_month" {% if request.GET.date_filter == 'last_month' %}selected{% endif %}>Last Month</option>
+      </select>
+    </div>
+
+    <div class="col-md-4 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+    </div>
+  </form>
+
   {% if jobs %}
     <div class="row">
       {% for job in jobs %}
@@ -22,15 +74,15 @@
               <p class="card-text mb-3"><strong>Salary:</strong> {{ job.salary_range }}</p>
               <p class="card-text text-muted small mt-auto">Posted on {{ job.posted_at|date:"M d, Y" }}</p>
               <a href="{% url 'apply_to_job' job.id %}" class="btn btn-primary btn-sm">
-  <i class="fas fa-paper-plane"></i> Apply Now
-</a>
+                <i class="fas fa-paper-plane"></i> Apply Now
+              </a>
             </div>
           </div>
         </div>
       {% endfor %}
     </div>
   {% else %}
-    <p class="text-muted text-center">No jobs have been posted yet.</p>
+    <p class="text-muted text-center">No jobs match your criteria.</p>
   {% endif %}
 </div>
 {% endblock %}

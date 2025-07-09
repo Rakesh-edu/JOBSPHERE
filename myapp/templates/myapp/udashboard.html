@@ -1,26 +1,53 @@
 {% extends 'myapp/base.html' %}
 
+{% block title %}JobSphere-Dashboard{% endblock %}
 {% block content %}
 <section class="py-5">
   <div class="container">
     <h2 class="mb-4">Hello, {{ applicant.full_name }}</h2>
     <h4 class="mb-3">Your Applied Jobs</h4>
 
-    {% if applied_jobs %}
+    {% if applications %}
       <div class="row g-4">
-        {% for job in applied_jobs %}
+        {% for application in applications %}
         <div class="col-md-4">
-          <div class="card shadow-sm h-100">
-            <div class="card-body">
-              <h5 class="card-title">{{ job.title }}</h5>
-              <h6 class="card-subtitle text-muted">{{ job.recruiter.company_name }}</h6>
-              <p class="card-text">{{ job.description|truncatewords:20 }}</p>
-              <span class="badge bg-primary">{{ job.job_type }}</span>
-              <div class="mt-2 text-success fw-bold">{{ job.salary_range }}</div>
-              <div class="mt-2 small text-muted">Posted on {{ job.posted_at|date:"M d, Y" }}</div>
+          <div class="card shadow-lg h-100 border-0">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold">{{ application.job.title }}</h5>
+              <ul class="list-unstyled mb-3">
+                <li><strong>Company:</strong> {{ application.job.recruiter.company_name }}</li>
+                <li><strong>Location:</strong> {{ application.job.location }}</li>
+                <li><strong>Type:</strong> {{ application.job.job_type }}</li>
+                <li><strong>Salary:</strong> {{ application.job.salary_range }}</li>
+                <li class="text-muted">
+                  <small><i class="far fa-calendar-alt me-1"></i>
+                  Posted on {{ application.job.posted_at|date:"M d, Y" }}</small>
+                </li>
+                <li>
+  <small><strong>Status:</strong>
+  {% if application.status|lower == "pending" %}
+    <span class="badge bg-warning text-dark">Pending</span>
+  {% elif application.status|lower == "approved" %}
+    <span class="badge bg-success">Approved</span>
+  {% elif application.status|lower == "rejected" %}
+    <span class="badge bg-danger">Rejected</span>
+  {% else %}
+    <span class="badge bg-secondary">{{ application.get_status_display }}</span>
+  {% endif %}
+</small>
 
-              <!-- Chat button -->
-              <a href="{% url 'applicant_chat' recruiter.id %}" class="btn btn-primary">Chat with {{ recruiter.full_name }}</a>
+</li>
+
+                <li>
+                  <small><strong>Applied on:</strong> {{ application.applied_at|date:"M d, Y" }}</small>
+                </li>
+              </ul>
+
+              <div class="mt-auto text-center">
+                <a href="{% url 'applicant_chat' application.job.recruiter.id %}" class="btn btn-primary btn-sm w-100">
+                  <i class="fas fa-comments me-1"></i> Chat with {{ application.job.recruiter.full_name }}
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,0 +1,72 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}JobSphere-HelpCenter{% endblock %}
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary">Help Center</h1>
+      <p class="lead text-muted">How can we assist you today?</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-semibold mb-3">Getting Started</h5>
+            <p class="text-muted mb-3">Learn how to create an account, set up your profile, and start applying or posting jobs.</p>
+            <a href="{% url 'helpcenter/getting_started' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-semibold mb-3">Account Management</h5>
+            <p class="text-muted mb-3">Find help with updating your information, changing passwords, and managing notifications.</p>
+            <a href="{% url 'helpcenter/account_management' %}" class="btn btn-outline-primary btn-sm">Manage Account</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-semibold mb-3">Job Applications</h5>
+            <p class="text-muted mb-3">Get tips on applying for jobs, tracking applications, and improving your chances of success.</p>
+            <a href="{% url 'job_applications' %}" class="btn btn-outline-primary btn-sm">View Guide</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-semibold mb-3">Technical Issues</h5>
+            <p class="text-muted mb-3">Having trouble with the site? Let us help you troubleshoot and resolve problems quickly.</p>
+            <a href="{% url 'technical_issues'%}" class="btn btn-outline-primary btn-sm">Get Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-semibold mb-3">Contact Us</h5>
+            <p class="text-muted mb-3">Still have questions? Reach out to our support team for personalized assistance.</p>
+            <a href="{% url 'contactus' %}" class="btn btn-outline-primary btn-sm">Contact Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 text-center">
+  <div class="container">
+    <h3 class="fw-bold mb-3">Need Immediate Assistance?</h3>
+    <p class="text-muted mb-4">Call our support line or email us any time—we're here to help 24/7.</p>
+    <div class="d-flex justify-content-center gap-3">
+      <a href="tel:+1800123456" class="btn btn-primary">Call Support</a>
+      <a href="mailto:support@jobsphere.com" class="btn btn-outline-primary">Email Support</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

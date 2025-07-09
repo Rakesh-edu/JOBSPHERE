@@ -1,0 +1,92 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block title %}JobSphere-HelpCenter{% endblock %}
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="text-center mb-4">Help Center</h1>
+    <p class="lead text-center mb-5">
+      Find answers to your questions and learn how to get the most out of JobSphere.
+    </p>
+    
+    <!-- Search Bar -->
+    <form class="row justify-content-center mb-5">
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Search help topics...">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Posting Jobs</h5>
+            <p class="card-text">
+              Learn how to create, edit, and manage your job postings.
+            </p>
+            <a href="{% url 'recruiter_FAQ' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Managing Applicants</h5>
+            <p class="card-text">
+              View, track, and communicate with candidates who apply.
+            </p>
+            <a href="{% url 'recruiter_FAQ' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Account Settings</h5>
+            <p class="card-text">
+              Update your profile, change your password, and manage notifications.
+            </p>
+            <a href="{% url 'recruiter_FAQ' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Billing & Invoices</h5>
+            <p class="card-text">
+              Get help with billing, plans, and downloading invoices.
+            </p>
+            <a href="{% url 'recruiter_FAQ' %}" class="btn btn-outline-primary btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Technical Support</h5>
+            <p class="card-text">
+              Report issues or get help with technical problems.
+            </p>
+            <a href="{% url 'recruiter_contact' %}" class="btn btn-outline-primary btn-sm">Contact Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">General Questions</h5>
+            <p class="card-text">
+              Find answers to common questions about using JobSphere.
+            </p>
+            <a href="{% url 'recruiter_FAQ' %}" class="btn btn-outline-primary btn-sm">View FAQs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,11 +1,13 @@
 {% extends 'myapp/rbase.html' %}
 
+{% block title %}JobSphere - Applicants{% endblock %}
+
 {% block content %}
 <section class="bg-primary text-white text-center py-4">
-    <div class="container">
-      <h1>Applicants</h1>
-      <p class="lead">Review all candidates who applied to your jobs.</p>
-    </div>
+  <div class="container">
+    <h1>Applicants</h1>
+    <p class="lead">Review all candidates who applied to your jobs.</p>
+  </div>
 </section>
 
 <div class="container my-5">
@@ -13,7 +15,7 @@
     <table class="table table-bordered table-striped">
       <thead class="table-dark">
         <tr>
-          <th>#</th>
+          <th>Sl no</th>
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
@@ -29,11 +31,15 @@
             <td>{{ applicant.email }}</td>
             <td>{{ applicant.phone }}</td>
             <td>
-              {% for job in applicant.applied_jobs.all %}
-                <span class="badge bg-secondary">{{ job.title }}</span>
-              {% empty %}
-                <span class="text-muted">No jobs</span>
-              {% endfor %}
+              {% with applications=applicant.application_set.all %}
+                {% if applications %}
+                  {% for application in applications %}
+                    <span class="badge bg-secondary">{{ application.job.title }}</span>
+                  {% endfor %}
+                {% else %}
+                  <span class="text-muted">No jobs</span>
+                {% endif %}
+              {% endwith %}
             </td>
           </tr>
           {% endfor %}

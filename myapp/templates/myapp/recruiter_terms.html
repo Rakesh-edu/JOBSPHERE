@@ -1,0 +1,61 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block title %}JobSphere-Terms Of Services{% endblock %}
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="text-center mb-4">Terms of Service</h1>
+    <p class="text-muted text-center mb-5">Effective Date: July 8, 2025</p>
+
+    <div class="mb-4">
+      <h4>1. Acceptance of Terms</h4>
+      <p>
+        By using the JobSphere platform as a recruiter, you agree to comply with and be legally bound by these Terms of Service. If you do not agree with these terms, you should not use the platform.
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <h4>2. Recruiter Responsibilities</h4>
+      <ul>
+        <li>Post only genuine and legally compliant job listings.</li>
+        <li>Ensure all job details are accurate and up-to-date.</li>
+        <li>Use applicant information only for recruitment purposes.</li>
+      </ul>
+    </div>
+
+    <div class="mb-4">
+      <h4>3. Prohibited Conduct</h4>
+      <ul>
+        <li>No posting of misleading or fraudulent job offers.</li>
+        <li>No harassment or abuse of applicants.</li>
+        <li>No use of the platform to collect data without consent.</li>
+      </ul>
+    </div>
+
+    <div class="mb-4">
+      <h4>4. Termination</h4>
+      <p>
+        We reserve the right to suspend or terminate your account if we find violations of these terms or any unethical behavior.
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <h4>5. Limitation of Liability</h4>
+      <p>
+        JobSphere is not responsible for any damages or losses arising from your use of the platform or inability to use it.
+      </p>
+    </div>
+
+    <div class="mb-4">
+      <h4>6. Updates to Terms</h4>
+      <p>
+        We may update these terms at any time. Continued use of the platform constitutes acceptance of the revised terms.
+      </p>
+    </div>
+
+    <div class="mt-5 text-center">
+      <p>If you have any questions, please <a href="{% url 'recruiter_contact' %}">contact us</a>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

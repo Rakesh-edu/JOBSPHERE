@@ -1,0 +1,53 @@
+{% extends 'myapp/rbase.html' %}
+
+{% block title %}JobSphere-ContactUs{% endblock %}
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <p class="lead text-center mb-5">
+      We'd love to hear from you. Reach out with any questions or partnership opportunities.
+    </p>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h5>Contact Information</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+            Hyderabad, Telangana, India
+          </li>
+          <li class="mb-2">
+            <i class="fas fa-envelope me-2 text-primary"></i>
+            support@jobsphere.com
+          </li>
+          <li>
+            <i class="fas fa-phone me-2 text-primary"></i>
+            +91 98765 43210
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h5>Send Us a Message</h5>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

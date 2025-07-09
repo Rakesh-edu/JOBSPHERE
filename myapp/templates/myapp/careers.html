@@ -1,7 +1,8 @@
 {% extends 'myapp/base.html' %}
 
+{% block title %}JobSphere-Careers{% endblock %}
 {% block content %}
-<section class="bg-primary text-white py-5">
+<section class="bg-info text-white py-5">
   <div class="container text-center">
     <h1 class="display-4 fw-bold">Join Our Team</h1>
     <p class="lead">Explore exciting career opportunities and grow with us.</p>
@@ -91,6 +92,13 @@
         </div>
       </div>
       <!-- Add more job cards as needed -->
+    </div>
+
+    <!-- View More Jobs Button -->
+    <div class="text-center mt-4">
+      <a href="{% url 'jobs' %}" class="btn btn-outline-success btn-lg">
+        <i class="fas fa-briefcase me-2"></i> Browse More Jobs....
+      </a>
     </div>
   </div>
 </section>

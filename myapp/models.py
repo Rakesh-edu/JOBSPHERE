@@ -34,7 +34,7 @@ class Job(models.Model):
     job_type = models.CharField(max_length=50)
     salary_range = models.CharField(max_length=50)
     posted_at = models.DateTimeField(auto_now_add=True)
-    applicants = models.ManyToManyField(Applicant, blank=True, related_name="applied_jobs")
+    # applicants = models.ManyToManyField(Applicant, blank=True, related_name="applied_jobs") commented bcuz of applicaiton model introduced
 
     def __str__(self):
         return self.title
@@ -73,3 +73,23 @@ class Message(models.Model):
 
     def __str__(self):
         return f"{self.content[:30]}..."
+    
+class Application(models.Model):
+    STATUS_CHOICES = [
+        ("pending", "Pending"),
+        ("reviewed", "Reviewed"),
+        ("interviewed", "Interviewed"),
+        ("accepted", "Accepted"),
+        ("rejected", "Rejected"),
+    ]
+
+    applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
+    applied_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('applicant', 'job')
+
+    def __str__(self):
+        return f"{self.applicant.full_name} - {self.job.title} ({self.status})"

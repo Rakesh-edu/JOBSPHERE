@@ -1,0 +1,65 @@
+{% extends "myapp/base.html" %}
+
+{% block title %}JobSphere-Job Application{% endblock %}
+{% block content %}
+<section class="bg-info text-white text-center py-5">
+  <div class="container">
+    <h1 class="fw-bold"><i class="fas fa-clipboard-check"></i> Job Applications</h1>
+    <p class="lead">Get tips on applying for jobs, tracking applications, and improving your chances of success.</p>
+  </div>
+</section>
+
+<div class="container my-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-paper-plane me-2"></i>Applying for Jobs</h5>
+          <p class="card-text">
+            Carefully read the job description and tailor your resume to highlight your most relevant skills and experience.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'jobs' %}" class="btn btn-primary btn-sm">Browse Jobs</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-search me-2"></i>Tracking Applications</h5>
+          <p class="card-text">
+            Keep track of the jobs you’ve applied to in your dashboard and monitor your application status.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'udashboard' %}" class="btn btn-primary btn-sm">View My Applications</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><i class="fas fa-thumbs-up me-2"></i>Improve Your Chances</h5>
+          <p class="card-text">
+            Keep your profile updated, use professional language, and apply early to increase your chances of success.
+          </p>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a href="{% url 'edit_profile' %}" class="btn btn-primary btn-sm">Update Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-4 bg-light">
+  <div class="container text-center">
+    <p class="mb-1">Need more help with job applications?</p>
+    <a href="{% url 'helpcenter' %}" class="btn btn-outline-primary btn-sm me-2">Visit Help Center</a>
+    <a href="{% url 'contactus' %}" class="btn btn-outline-primary btn-sm">Contact Support</a>
+  </div>
+</section>
+{% endblock %}
