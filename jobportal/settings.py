@@ -28,11 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'jobsphere-8aow.onrender.com',
     'localhost',
-    '127.0.0.1']
+    '127.0.0.1'
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://jobsphere-8aow.onrender.com'
 ]
+
 
 
 # Application definition
